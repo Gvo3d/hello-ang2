@@ -1,8 +1,8 @@
 import { StatisticsSender }  from './StatisticsSender';
 import { Component, Inject } from '@angular/core';
-import {OnInit} from "@angular/core";
+import { OnInit, OnDestroy } from "@angular/core";
 
-export abstract class AbstractComponent implements OnInit {
+export abstract class AbstractComponent implements OnInit,OnDestroy {
     private sender: StatisticsSender;
     private myIdentity: string;
 
@@ -17,7 +17,10 @@ export abstract class AbstractComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        console.log(this.sender);
         this.sender.sendData(this.myIdentity);
+    }
+
+    ngOnDestroy():void {
+      this.sender.sendData(this.myIdentity);
     }
 }
