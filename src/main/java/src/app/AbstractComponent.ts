@@ -3,10 +3,11 @@ import { Component, Inject } from '@angular/core';
 import {OnInit} from "@angular/core";
 
 export abstract class AbstractComponent implements OnInit {
-    @Inject(StatisticsSender) private sender: StatisticsSender;
+    private sender: StatisticsSender;
     private myIdentity: string;
 
     constructor(identity: string) {
+    this.sender = new StatisticsSender();
         this.myIdentity = identity;
         console.log('Sending data to some method from AbstractComponent:'+this.myIdentity);
     }

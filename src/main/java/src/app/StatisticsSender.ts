@@ -1,15 +1,15 @@
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { HttpModule } from '@angular/http';
+import { Inject } from '@angular/core';
 import { Component, Injectable } from '@angular/core';
 
 @Injectable()
 export class StatisticsSender {
-  private http: Http;
+  @Inject(Http) private http: Http;
   url: string;
   authToken: string;
 
-  constructor(private https: Http) {
-    this.http = https;
+  constructor() {
     this.url = "http://localhost:8088/services/collector/event";
     this.authToken = "Splunk B6438D3D-879C-4904-83EF-DF0FE70EF245";
   }
