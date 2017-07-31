@@ -12,18 +12,8 @@ import { StatisticsSender }  from './StatisticsSender';
 })
 
 export class MyComponent extends AbstractComponent {
-  name: string;
-  constructor() {
-    super('Max');
-    this.name = 'Max';
-  }
-
-  getId(){
-      return this.name;
-  };
-
-  sayMyName() {
-    console.log('My name is', this.name)
+  constructor(statisticsSender: StatisticsSender) {
+    super(statisticsSender, 'MyComponentImplementation');
   }
 
 }
